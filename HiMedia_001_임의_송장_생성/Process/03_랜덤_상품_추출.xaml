@@ -1,0 +1,386 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_03_랜덤_상품_추출" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:bes="clr-namespace:BalaReva.Excel.Sheets;assembly=BalaReva.Excel" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_dic_설정" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_row_현재수신자정보" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="out_dt_송장입력용" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>634,5099.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_03_랜덤_상품_추출_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="62">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>BalaReva.Excel.Sheets</x:String>
+      <x:String>BalaReva.Excel.Base</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel</AssemblyReference>
+      <AssemblyReference>BalaReva.Excel.Base</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_03_랜덤_상품_추출" sap:VirtualizedContainerService.HintSize="644,5034.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_원본상품정보" />
+      <Variable x:TypeArguments="x:String" Name="str_test" />
+      <Variable x:TypeArguments="x:Int32" Name="int32_삭제할품목개수" />
+      <Variable x:TypeArguments="scg:List(x:Int32)" Name="list_int32_삭제할품번" />
+      <Variable x:TypeArguments="x:Int32" Name="int32_삭제할품번번호" />
+      <Variable x:TypeArguments="x:Int32" Name="int32_주문수량" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - 03_랜덤_상품_추출 시작" sap:VirtualizedContainerService.HintSize="602,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;03_랜덤_상품_추출 시작&quot;]" />
+    <ui:ReadRange AddHeaders="True" DataTable="[dt_원본상품정보]" DisplayName="Read Range-상품 읽기" sap:VirtualizedContainerService.HintSize="602,86.6666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="상품 리스트" WorkbookPath="C:\Users\MY_PC\Documents\UiPath\HiMedia_001_임의_송장_생성\Template\상품 데이터.xlsx">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+    </ui:ReadRange>
+    <Sequence DisplayName="랜덤 품목 제거" sap:VirtualizedContainerService.HintSize="602,1217.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="Assign-list변수 초기화" sap:VirtualizedContainerService.HintSize="412.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:List(x:Int32)">[list_int32_삭제할품번]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:List(x:Int32)">[new list(of int32)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign-삭제할 품목개수 배정" sap:VirtualizedContainerService.HintSize="412.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[int32_삭제할품목개수]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[new random().next(8,20)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="412.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;삭제할 품목 개수:&quot; + int32_삭제할품목개수.ToString]" />
+      <ui:InterruptibleDoWhile sap2010:Annotation.AnnotationText="list_int32_삭제할품번.distinct.count=int32_삭제할품목개수&#xA;&#xA;true면 반복됨&#xA;&#xA;따라서 not 붙여서&#xA;true면 그만 돌게 하면됨&#xA;&#xA;ex)&#xA;삭제할 품목개수가 랜덤으로 10개가 나오면&#xA;삭제할 품번번호가 10개가 될때까지 반복됨&#xA;" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="412.666666666667,385.333333333333" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+        <ui:InterruptibleDoWhile.Body>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304.666666666667,216" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="262.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[int32_삭제할품번번호]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[new Random().next(1,21)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <AddToCollection x:TypeArguments="x:Int32" Collection="[list_int32_삭제할품번]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="262.666666666667,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[int32_삭제할품번번호]" />
+          </Sequence>
+        </ui:InterruptibleDoWhile.Body>
+        <ui:InterruptibleDoWhile.Condition>
+          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="not(list_int32_삭제할품번.distinct.count=int32_삭제할품목개수)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+        </ui:InterruptibleDoWhile.Condition>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InterruptibleDoWhile>
+      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="list에 {3, 5, 7 ...} 이런식으로 품번번호가 남아있을거임!&#xA;&#xA;테이블에 있는 이 번호들이 제거되는것" DisplayName="For Each - data table필터링" sap:VirtualizedContainerService.HintSize="412.666666666667,393.333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[list_int32_삭제할품번.Distinct]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="376,254.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:FilterDataTable sap2010:Annotation.AnnotationText="열에 0 또는 &quot;번호&quot;라고 입력" DataTable="[dt_원본상품정보]" DisplayName="Filter Data Table-필터링" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="334,162.666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_원본상품정보]" SelectColumnsMode="Keep">
+                <ui:FilterDataTable.Filters>
+                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                    <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:String">["번호"]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="x:Object">[item]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                  </scg:List>
+                </ui:FilterDataTable.Filters>
+                <ui:FilterDataTable.SelectColumns>
+                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                    <x:Null />
+                  </scg:List>
+                </ui:FilterDataTable.SelectColumns>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:FilterDataTable>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEach>
+    </Sequence>
+    <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="save changes 체크해 놓으면 값하나 추가될때마다 저장되어서 느림&#xA;&#xA;따라서 체크 해제하고&#xA;다른 액티비션 추가해주기" AutoSave="False" DisplayName="Excel Application Scope - 상품 발송 리스트" sap:VirtualizedContainerService.HintSize="602,3177.33333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_dic_설정(&quot;OutputDataPathWorkDay&quot;).ToString +&quot;상품 발송 리스트_&quot; + now.ToString(&quot;yyyy.MM.dd&quot;)+&quot;.xlsx&quot;]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="568,3068.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[dt_원본상품정보]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="526,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" StartingCell="A1" />
+            <Sequence DisplayName="열이름입력" sap:VirtualizedContainerService.HintSize="526,558.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelWriteCell Cell="D1" DisplayName="Write Cell-수량" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="수량" />
+              <ui:ExcelWriteCell Cell="E1" DisplayName="Write Cell-합계" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="합계" />
+              <ui:ExcelWriteCell Cell="F1" DisplayName="Write Cell-부가세" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="부가세" />
+              <ui:ExcelWriteCell Cell="G1" DisplayName="Write Cell-총합계" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="총합계" />
+            </Sequence>
+            <Sequence DisplayName="수량 랜덤 입력" sap:VirtualizedContainerService.HintSize="526,493.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Int32" Name="int32_상품idx" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[int32_상품idx]" DataTable="[dt_원본상품정보]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="410,401.333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                <ui:ForEachRow.Body>
+                  <ActivityAction x:TypeArguments="sd:DataRow">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,280.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[int32_주문수량]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[new random().next(1,11)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:ExcelWriteCell sap2010:Annotation.AnnotationText="인덱스 0부터 시작이니까&#xA;0+2해서 d2부터 입력&#xA;다음은&#xA;1+2해서 d3에 입력&#xA;" Cell="[&quot;D&quot;+(int32_상품idx+2).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="[int32_주문수량.ToString]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:ExcelWriteCell>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEachRow.Body>
+              </ui:ForEachRow>
+            </Sequence>
+            <Sequence DisplayName="값 입력" sap:VirtualizedContainerService.HintSize="526,1085.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelWriteCell Cell="E2" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="484,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="=C2*D2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ExcelWriteCell>
+              <ui:ExcelWriteCell Cell="F2" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="484,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="=E2/10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ExcelWriteCell>
+              <ui:ExcelWriteCell Cell="G2" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="484,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="=E2+F2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ExcelWriteCell>
+              <If Condition="[dt_원본상품정보.rows.count&gt;1]" DisplayName="If-데이터테이블 row가 하나 이상인지?" sap:VirtualizedContainerService.HintSize="484,613.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,432" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExcelAutoFillRange sap2010:Annotation.AnnotationText="dt.rows.count -&gt; 행갯수(제목열 제외한)&#xA;dt.rows.count+1 (제목열 포함한 개수)-&gt; 마지막위치&#xA;&#xA;행갯수가 5개면&#xA;G2:G6 범위에 값 들어가는거!&#xA; " DisplayName="Auto Fill Range - 합계" FillRange="[&quot;E2:E&quot;+(dt_원본상품정보.rows.count+1).tostring]" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelAutoFillRange_1" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" SourceRange="E2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ExcelAutoFillRange>
+                    <ui:ExcelAutoFillRange sap2010:Annotation.AnnotationText="" DisplayName="Auto Fill Range - 부가세" FillRange="[&quot;F2:F&quot;+(dt_원본상품정보.rows.count+1).tostring]" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelAutoFillRange_2" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" SourceRange="F2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ExcelAutoFillRange>
+                    <ui:ExcelAutoFillRange sap2010:Annotation.AnnotationText="" DisplayName="Auto Fill Range - 총합계" FillRange="[&quot;G2:G&quot;+(dt_원본상품정보.rows.count+1).tostring]" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelAutoFillRange_3" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" SourceRange="G2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ExcelAutoFillRange>
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+            <Sequence DisplayName="최종합계 입력" sap:VirtualizedContainerService.HintSize="526,432" sap2010:WorkflowViewState.IdRef="Sequence_11">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelWriteCell Cell="[&quot;E&quot; +(dt_원본상품정보.rows.count+2).ToString]" DisplayName="Write Cell-합계최종" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_9" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="[&quot;=SUM(E2:E&quot;+(dt_원본상품정보.rows.count+1).ToString+&quot;)&quot;]" />
+              <ui:ExcelWriteCell Cell="[&quot;F&quot; +(dt_원본상품정보.rows.count+2).ToString]" DisplayName="Write Cell-부가세최종" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="[&quot;=SUM(F2:F&quot;+(dt_원본상품정보.rows.count+1).ToString+&quot;)&quot;]" />
+              <ui:ExcelWriteCell Cell="[&quot;G&quot; +(dt_원본상품정보.rows.count+2).ToString]" DisplayName="Write Cell-총합계최종" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]" Text="[&quot;=SUM(G2:G&quot;+(dt_원본상품정보.rows.count+1).ToString+&quot;)&quot;]" />
+            </Sequence>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dt_송장입력용]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="526,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[in_row_현재수신자정보.item(&quot;이름&quot;).ToString]">
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+            </ui:ExcelReadRange>
+            <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="526,22" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
+    <bes:DeleteSheet ExecutionResult="{x:Null}" FilePassword="{x:Null}" ModifyPassword="{x:Null}" ContinueOnError="True" Delay="3" DisplayName="Delete Sheet-sheet1삭제" FilePath="[in_dic_설정(&quot;OutputDataPathWorkDay&quot;).ToString +&quot;상품 발송 리스트_&quot; + now.ToString(&quot;yyyy.MM.dd&quot;)+&quot;.xlsx&quot;]" sap:VirtualizedContainerService.HintSize="602,72" sap2010:WorkflowViewState.IdRef="DeleteSheet_1" SheetName="Sheet1" />
+    <ui:LogMessage DisplayName="Log Message-03_랜덤_상품_추출 끝" sap:VirtualizedContainerService.HintSize="602,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;03_랜덤_상품_추출 끝&quot;]" />
+  </Sequence>
+</Activity>

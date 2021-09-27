@@ -1,0 +1,394 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_3_엑셀_디자인" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_dic_설정" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_str_USD" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_JPY" Type="OutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>738.666666666667,4785.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_3_엑셀_디자인_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="31">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="748.666666666667,4720.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="_3_엑셀_디자인" sap:VirtualizedContainerService.HintSize="706.666666666667,4628.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="scg:List(x:String)" Name="list_str_시트" />
+        <Variable x:TypeArguments="x:Int32" Name="int32_인덱스" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message - 3.엑셀 디자인 시작" sap:VirtualizedContainerService.HintSize="664.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;3.엑셀 디자인 시작&quot;]" />
+      <Assign DisplayName="Assign - List 변수 초기화" sap:VirtualizedContainerService.HintSize="664.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:List(x:String)">[list_str_시트]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:List(x:String)">[new List(Of String)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - 산출물" sap:VirtualizedContainerService.HintSize="664.666666666667,4165.33333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_dic_설정(&quot;OutputDataPathWorkDay&quot;).ToString+&quot;환율변동추이(&quot;+now.toString(&quot;yyyy.MM.dd&quot;)+&quot;).xlsx&quot;]">
+        <ui:ExcelApplicationScope.Body>
+          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="630.666666666667,4056.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Double" Name="dbl_USD" />
+                <Variable x:TypeArguments="x:Double" Name="dbl_JPY" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets - 시트이름 불러오기" sap:VirtualizedContainerService.HintSize="588.666666666667,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_1" Sheets="[list_str_시트]" />
+              <RemoveFromCollection x:TypeArguments="x:String" Collection="[list_str_시트]" DisplayName="Remove From Collection - 요약 시트 제거" sap:VirtualizedContainerService.HintSize="588.666666666667,22" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_2" Item="요약" />
+              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each - 시트 이름만큼 반복" sap:VirtualizedContainerService.HintSize="588.666666666667,1489.33333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[list_str_시트]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="552,1354" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="sd:DataTable" Name="dt_시트별데이터" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_시트별데이터]" DisplayName="Read Range - 시트별 데이터 읽기" sap:VirtualizedContainerService.HintSize="510,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[item.ToString]">
+                        <ui:ExcelReadRange.Range>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ui:ExcelReadRange.Range>
+                      </ui:ExcelReadRange>
+                      <ui:ExcelSetRangeColor Color="[Color.Yellow]" DisplayName="Set Range Color - 열이름 색 변경" sap:VirtualizedContainerService.HintSize="510,190" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_1" Range="A1:J1" SheetName="[item.ToString]" />
+                      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - Excel" sap:VirtualizedContainerService.HintSize="510,933.333333333333" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="76dc201cd5d9499ae09be36728ecab35" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='환율변동추이(*).xlsx - Excel' /&gt;">
+                        <ui:WindowScope.Body>
+                          <ActivityAction x:TypeArguments="x:Object">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,787.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey - 이동팝업 열기" sap:VirtualizedContainerService.HintSize="434,117.333333333333" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="f5" KeyModifiers="None" SpecialKey="True">
+                                <ui:SendHotkey.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="2d40a95a-2c15-404f-95d1-4411d13db615">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:SendHotkey.Target>
+                              </ui:SendHotkey>
+                              <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear - 이동팝업" sap:VirtualizedContainerService.HintSize="434,402" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="False">
+                                <ui:OnUiElementAppear.Body>
+                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,226" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into -선택할 셀 범위 입력" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[&quot;'&quot;+item.ToString+&quot;'!A1:J&quot;+(dt_시트별데이터.rows.count+1).ToString+ &quot;[k(enter)]&quot;]">
+                                      <ui:TypeInto.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1ae69af0-4e51-4750-aa60-cba51b7b141e" InformativeScreenshot="4957549d5c21f8c804d0da32769bbe86" Selector="&lt;wnd app='excel.exe' cls='bosa_sdm_XL9' title='이동' /&gt;&lt;wnd cls='RichEdit20W' /&gt;">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:TypeInto.Target>
+                                    </ui:TypeInto>
+                                  </Sequence>
+                                </ui:OnUiElementAppear.Body>
+                                <ui:OnUiElementAppear.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c1ba42fc-7e04-4749-b21c-029b4467c2be" InformativeScreenshot="1dbf38574983564378500fab8b71b71a" Selector="&lt;wnd app='excel.exe' cls='bosa_sdm_XL9' title='이동' /&gt;&lt;uia automationid='TitleBar' role='제목 표시줄' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:OnUiElementAppear.Target>
+                              </ui:OnUiElementAppear>
+                              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into - 표 테두리 설정" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[&quot;[k(alt)]&quot;+&quot;H&quot;+&quot;B&quot;+&quot;A&quot;]">
+                                <ui:TypeInto.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="87557120-0813-45c8-afed-f704bc0266bc">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:TypeInto.Target>
+                              </ui:TypeInto>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:WindowScope.Body>
+                      </ui:WindowScope>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEach>
+              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="[int32_인덱스]" DisplayName="For Each - 요약시트 데이터 입력" sap:VirtualizedContainerService.HintSize="588.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[list_str_시트.OrderBy(function(x) X)]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="376,432" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ExcelWriteCell sap2010:Annotation.AnnotationText="인덱스 0부터 시작하는데&#xA;A6부터 입력되어야하니까 +6" Cell="[&quot;A&quot;+(int32_인덱스+6).ToString]" DisplayName="Write Cell - 날짜 입력" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="요약" Text="[item.ToString]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:ExcelWriteCell>
+                      <ui:ExcelWriteCell sap2010:Annotation.AnnotationText="날짜있는 시트의&#xA;l2셀 가져오는 것" Cell="[&quot;B&quot;+(int32_인덱스+6).ToString]" DisplayName="Write Cell - 매매기준율(USD)" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="요약" Text="[&quot;='&quot;+item.ToString+&quot;'!I2&quot;]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:ExcelWriteCell>
+                      <ui:ExcelWriteCell sap2010:Annotation.AnnotationText="" Cell="[&quot;D&quot;+(int32_인덱스+6).ToString]" DisplayName="Write Cell - 매매기준율(JPY)" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="요약" Text="[&quot;='&quot;+item.ToString+&quot;'!I3&quot;]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:ExcelWriteCell>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEach>
+              <ui:ExcelAutoFillRange DisplayName="Auto Fill Range - USD" FillRange="[&quot;C6:C&quot;+(list_str_시트.Count+5).ToString]" sap:VirtualizedContainerService.HintSize="588.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelAutoFillRange_1" SheetName="요약" SourceRange="C6" />
+              <ui:ExcelAutoFillRange DisplayName="Auto Fill Range - JPY" FillRange="[&quot;E6:E&quot;+(list_str_시트.Count+5).ToString]" sap:VirtualizedContainerService.HintSize="588.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelAutoFillRange_2" SheetName="요약" SourceRange="E6" />
+              <ui:ExcelWriteCell Cell="[&quot;B&quot;+(list_str_시트.Count+6).ToString]" DisplayName="Write Cell - USD 총 대비" sap:VirtualizedContainerService.HintSize="588.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="요약" Text="USD 총 대비" />
+              <ui:ExcelWriteCell Cell="[&quot;D&quot;+(list_str_시트.Count+6).ToString]" DisplayName="Write Cell - JPY 총 대비" sap:VirtualizedContainerService.HintSize="588.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="요약" Text="JPY 총 대비" />
+              <ui:ExcelWriteCell Cell="[&quot;C&quot;+(list_str_시트.Count+6).ToString]" DisplayName="Write Cell - USD 총 대비 함수 입력" sap:VirtualizedContainerService.HintSize="588.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="요약" Text="[String.Format(&quot;=B{0}-B6&quot;,list_str_시트.Count+5)]" />
+              <ui:ExcelWriteCell Cell="[&quot;E&quot;+(list_str_시트.Count+6).ToString]" DisplayName="Write Cell - USD 총 대비 함수 입력" sap:VirtualizedContainerService.HintSize="588.666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="요약" Text="[String.Format(&quot;=D{0}-D6&quot;,list_str_시트.Count+5)]" />
+              <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window - 요약시트" sap:VirtualizedContainerService.HintSize="588.666666666667,933.333333333333" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="dc0b84cf54c61c59cbb0f3b2ac5b459c" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='환율변동추이(*).xlsx - Excel' /&gt;">
+                <ui:WindowScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,787.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey - 이동팝업 열기" sap:VirtualizedContainerService.HintSize="434,117.333333333333" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="f5" KeyModifiers="None" SpecialKey="True">
+                        <ui:SendHotkey.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="2d40a95a-2c15-404f-95d1-4411d13db615">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:SendHotkey.Target>
+                      </ui:SendHotkey>
+                      <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear - 이동팝업" sap:VirtualizedContainerService.HintSize="434,402" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2" RepeatForever="False">
+                        <ui:OnUiElementAppear.Body>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,226" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into -선택할 셀 범위 입력" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[&quot;A5:E&quot;+(list_str_시트.Count+6).ToString+ &quot;[k(enter)]&quot;]">
+                              <ui:TypeInto.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1ae69af0-4e51-4750-aa60-cba51b7b141e" InformativeScreenshot="4957549d5c21f8c804d0da32769bbe86" Selector="&lt;wnd app='excel.exe' cls='bosa_sdm_XL9' title='이동' /&gt;&lt;wnd cls='RichEdit20W' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:TypeInto.Target>
+                            </ui:TypeInto>
+                          </Sequence>
+                        </ui:OnUiElementAppear.Body>
+                        <ui:OnUiElementAppear.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c1ba42fc-7e04-4749-b21c-029b4467c2be" InformativeScreenshot="1dbf38574983564378500fab8b71b71a" Selector="&lt;wnd app='excel.exe' cls='bosa_sdm_XL9' title='이동' /&gt;&lt;uia automationid='TitleBar' role='제목 표시줄' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:OnUiElementAppear.Target>
+                      </ui:OnUiElementAppear>
+                      <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into - 표 테두리 설정" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[&quot;[k(alt)]&quot;+&quot;H&quot;+&quot;B&quot;+&quot;A&quot;]">
+                        <ui:TypeInto.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="87557120-0813-45c8-afed-f704bc0266bc">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:TypeInto.Target>
+                      </ui:TypeInto>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:WindowScope.Body>
+              </ui:WindowScope>
+              <ui:ExcelReadCell Cell="[&quot;C&quot;+(list_str_시트.Count+6).ToString]" DisplayName="Read Cell - USD 총 대비 읽어오기" sap:VirtualizedContainerService.HintSize="588.666666666667,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="요약">
+                <ui:ExcelReadCell.Result>
+                  <OutArgument x:TypeArguments="x:Double">[dbl_USD]</OutArgument>
+                </ui:ExcelReadCell.Result>
+              </ui:ExcelReadCell>
+              <ui:ExcelReadCell Cell="[&quot;E&quot;+(list_str_시트.Count+6).ToString]" DisplayName="Read Cell - JPY 총 대비 읽어오기" sap:VirtualizedContainerService.HintSize="588.666666666667,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" SheetName="요약">
+                <ui:ExcelReadCell.Result>
+                  <OutArgument x:TypeArguments="x:Double">[dbl_JPY]</OutArgument>
+                </ui:ExcelReadCell.Result>
+              </ui:ExcelReadCell>
+              <Assign sap:VirtualizedContainerService.HintSize="588.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[out_str_USD]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[(cint(dbl_USD)).ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="588.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[out_str_JPY]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[(cint(dbl_JPY)).ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="588.666666666667,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+              <ui:ExcelSaveWorkbook DisplayName="Save Workbook - 엑셀 저장" sap:VirtualizedContainerService.HintSize="588.666666666667,22" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_1" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ExcelApplicationScope.Body>
+      </ui:ExcelApplicationScope>
+      <ui:LogMessage DisplayName="Log Message - 3.엑셀 디자인 끝" sap:VirtualizedContainerService.HintSize="664.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;3.엑셀 디자인 끝&quot;]" />
+    </Sequence>
+  </Sequence>
+</Activity>

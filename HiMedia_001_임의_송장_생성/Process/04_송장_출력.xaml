@@ -1,0 +1,352 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_04_송장_출력" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_row_현재수신자정보" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_dic_설정" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dt_송장입력용" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1224,5925.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_04_송장_출력_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="29">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Word.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_04_송장_출력" sap:VirtualizedContainerService.HintSize="1234,5860.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="int32_결제방식" />
+      <Variable x:TypeArguments="x:String" Name="str_지불조건" />
+      <Variable x:TypeArguments="x:Int32" Name="int32_반복계수" />
+      <Variable x:TypeArguments="x:Int32" Name="int32_index송장입력용" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - 04_송장 출력 시작" sap:VirtualizedContainerService.HintSize="1192,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;04_송장 출력 시작&quot;]" />
+    <Assign sap2010:Annotation.AnnotationText="0 이면 무통장입금&#xA;1 이면 카드결제 나오게 할 것임&#xA;" DisplayName="Assign-결제방식 지정" sap:VirtualizedContainerService.HintSize="1192,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[int32_결제방식]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[new Random().next(0,2)]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <If Condition="[int32_결제방식=0]" DisplayName="If-결제방식" sap:VirtualizedContainerService.HintSize="1192,226" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Assign DisplayName="Assign-0인경우" sap:VirtualizedContainerService.HintSize="262.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[str_지불조건]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">무통장입금</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+      <If.Else>
+        <Assign DisplayName="Assign-1인경우" sap:VirtualizedContainerService.HintSize="262.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[str_지불조건]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">카드결제</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Else>
+    </If>
+    <ui:CopyFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="파일 수정하면 적용이 안되니까 복사해서 사용하기" Destination="C:\Users\MY_PC\Documents\UiPath\HiMedia_001_임의_송장_생성\Template\송장양식_입력용.docx" DisplayName="Copy File - 템플릿복사" sap:VirtualizedContainerService.HintSize="1192,162" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="C:\Users\MY_PC\Documents\UiPath\HiMedia_001_임의_송장_생성\Template\송장양식.docx">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CopyFile>
+    <p:WordApplicationScope AutoSave="False" DisplayName="Word Application Scope" FilePath="C:\Users\MY_PC\Documents\UiPath\HiMedia_001_임의_송장_생성\Template\송장양식_입력용.docx" sap:VirtualizedContainerService.HintSize="1192,4929.33333333333" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
+      <p:WordApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WordDocument">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="1158,4820.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="수신자 정보 입력" sap:VirtualizedContainerService.HintSize="1116,1296" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document - 수신자 이름 입력" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_1" Replace="[in_row_현재수신자정보(&quot;이름&quot;).ToString]" ReplaceAll="True" Search="{}{수신자이름}" />
+              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document - 수신자 회사 입력" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_2" Replace="[in_row_현재수신자정보(&quot;회사이름&quot;).ToString]" ReplaceAll="True" Search="{}{수신자회사}" />
+              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document - 수신자 주소 입력" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_3" Replace="[in_row_현재수신자정보(&quot;주소&quot;).ToString]" ReplaceAll="True" Search="{}{수신자주소}" />
+              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document - 수신자 우편번호 입력" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_4" Replace="[in_row_현재수신자정보(&quot;우편번호&quot;).ToString]" ReplaceAll="True" Search="{}{수신자우편번호}" />
+              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document - 수신자 전화번호 입력" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_5" Replace="[in_row_현재수신자정보(&quot;전화번호&quot;).ToString]" ReplaceAll="True" Search="{}{수신자전화번호}" />
+              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document - 수신자 송장번호 입력" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_6" Replace="[in_row_현재수신자정보(&quot;송장번호&quot;).ToString]" ReplaceAll="True" Search="{}{송장번호}" />
+            </Sequence>
+            <Sequence DisplayName="지급조건 및 기한 입력" sap:VirtualizedContainerService.HintSize="1116,466.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document-결제방식" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_7" Replace="[str_지불조건]" ReplaceAll="True" Search="{}{지불조건}" />
+              <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document-납부기한" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_8" Replace="[now.AddDays(7).tostring(&quot;yyyy-MM-dd&quot;)]" ReplaceAll="True" Search="{}{납부기한}" />
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="(상품 발송리스트를 봤을때)&#xA;&#xA;int32_index송장입력용&lt;in_dt_송장입력용.rows-1&#xA;&#xA;&#xA;예를들어 5개의 상품이 추출되면&#xA;총합계까지 6개의 줄이 생김(제목 제외하고)&#xA;총합계 전까지만 반복되어야함!&#xA;int32_index송장입력용는 인덱스 최대 5개(인덱스 0부터5) &lt;in_dt_송장입력용.rows.count-1는 6개-1&#xA;(index는 0부터 시작하니까!!!!)&#xA;&#xA;즉 index 0,1,2,........5개 되기 전까지 반복!&#xA;5&lt;5&#xA;즉 인덱스4(제목제외 5개줄)까지 반복되는거 !! (인덱스5(제목제외 6번째줄)가 총합계)&#xA;-------------------------&#xA;(송장양식 봤을때)&#xA;&#xA;수량1, 수량2, 수량3.......이렇게 나와있음&#xA;&quot;수량&quot;+(int32_index_송장입력용+1).tostring&#xA;이렇게 입력하는 이유 역시&#xA;index가 0부터 시작하므로&#xA;수량1, 수량2, 수량3 ...... 이렇게 나올거임!!!!&#xA;" DisplayName="주문 상품 정보 입력" sap:VirtualizedContainerService.HintSize="1116,1346.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[int32_index송장입력용]" DataTable="[in_dt_송장입력용]" DisplayName="For Each Row in Data Table-dt_송장입력용 리스트" sap:VirtualizedContainerService.HintSize="1074,1254.66666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                <ui:ForEachRow.Body>
+                  <ActivityAction x:TypeArguments="sd:DataRow">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1040,1134" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[int32_index송장입력용&lt;in_dt_송장입력용.rows.Count-1]" sap:VirtualizedContainerService.HintSize="998,1042" sap2010:WorkflowViewState.IdRef="If_2">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="476,881.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <p:WordReplaceText Found="{x:Null}" sap2010:Annotation.AnnotationText="&quot;{수량&quot;+(int32_index_송장입력용+1).tostring+&quot;}&quot;&#xA;-&gt; 수량1,수량2.....&#xA;이것도 되지만 복잡하므로&#xA;string.format 방법 사용해도됨 !! (test시퀀스 참고)&#xA;------&#xA;&#xA;in_dt_송장입력용(column인덱스)(row인덱스).tostring" DisplayName="Replace Text in Document-수량" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_9" Replace="[currentrow(&quot;수량&quot;).ToString]" ReplaceAll="True" Search="[&quot;{&quot;+string.Format(&quot;수량{0}&quot;, int32_index송장입력용+1)+&quot;}&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </p:WordReplaceText>
+                            <p:WordReplaceText Found="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Replace Text in Document-품명" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_10" Replace="[currentrow(&quot;품명&quot;).ToString]" ReplaceAll="True" Search="[&quot;{&quot;+string.Format(&quot;설명{0}&quot;, int32_index송장입력용+1)+&quot;}&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </p:WordReplaceText>
+                            <p:WordReplaceText Found="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Replace Text in Document-단가" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_11" Replace="[string.Format(&quot;{0:#,0}&quot;,cdbl(currentrow(&quot;단가&quot;).ToString))]" ReplaceAll="True" Search="[&quot;{&quot;+string.Format(&quot;단가{0}&quot;, int32_index송장입력용+1)+&quot;}&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </p:WordReplaceText>
+                            <p:WordReplaceText Found="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Replace Text in Document-합계" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_12" Replace="[string.Format(&quot;{0:#,0}&quot;,cdbl(currentrow(&quot;합계&quot;).ToString))]" ReplaceAll="True" Search="[&quot;{&quot;+string.Format(&quot;합계{0}&quot;, int32_index송장입력용+1)+&quot;}&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </p:WordReplaceText>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="476,674" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document-합계" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_17" Replace="[string.Format(&quot;{0:#,0}&quot;,cdbl(currentrow(&quot;합계&quot;).ToString))]" ReplaceAll="False" Search="{}{합계}" />
+                            <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document-부가세" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_18" Replace="[string.Format(&quot;{0:#,0}&quot;,cdbl(currentrow(&quot;부가세&quot;).ToString))]" ReplaceAll="True" Search="{}{부가세}" />
+                            <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text in Document-총합계" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_19" Replace="[string.Format(&quot;{0:#,0}&quot;,cdbl(currentrow(&quot;총합계&quot;).ToString))]" ReplaceAll="True" Search="{}{총합계}" />
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEachRow.Body>
+              </ui:ForEachRow>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="위의 예시와 이어서 봤을때,&#xA;{수량5}까지 입력된 상태&#xA;&#xA;(워드파일엔 {수량12}까지 나와있음)&#xA;&#xA;따라서 {수량6}~{수량12}부분은 필요가 없어서 지울거임 !!&#xA;" DisplayName="필요없는 텍스트 비우기" sap:VirtualizedContainerService.HintSize="1116,1346.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="512.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Int32">[int32_반복계수]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Int32">[in_dt_송장입력용.rows.count]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="위의 예시와 이어서&#xA;제목제외 6개의 줄!&#xA;따라서&#xA;6,7,8,9,10,11,12부분이 지워짐!" Condition="[int32_반복계수&lt;=12]" DisplayName="While" sap:VirtualizedContainerService.HintSize="512.666666666667,1152.66666666667" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                <ui:InterruptibleWhile.Body>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,983.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <p:WordReplaceText Found="{x:Null}" sap2010:Annotation.AnnotationText="&quot;{수량&quot;+(int32_index_송장입력용+1).tostring+&quot;}&quot;&#xA;-&gt; 수량1,수량2.....&#xA;이것도 되지만 복잡하므로&#xA;string.format 방법 사용해도됨 !! (test시퀀스 참고)&#xA;------&#xA;&#xA;in_dt_송장입력용(column인덱스)(row인덱스).tostring" DisplayName="Replace Text in Document-수량" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_13" ReplaceAll="True" Search="[&quot;{&quot;+string.Format(&quot;수량{0}&quot;, int32_반복계수)+&quot;}&quot;]">
+                      <p:WordReplaceText.Replace>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </p:WordReplaceText.Replace>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </p:WordReplaceText>
+                    <p:WordReplaceText Found="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Replace Text in Document-품명" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_14" ReplaceAll="True" Search="[&quot;{&quot;+string.Format(&quot;설명{0}&quot;, int32_반복계수)+&quot;}&quot;]">
+                      <p:WordReplaceText.Replace>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </p:WordReplaceText.Replace>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </p:WordReplaceText>
+                    <p:WordReplaceText Found="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Replace Text in Document-단가" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_15" ReplaceAll="True" Search="[&quot;{&quot;+string.Format(&quot;단가{0}&quot;, int32_반복계수)+&quot;}&quot;]">
+                      <p:WordReplaceText.Replace>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </p:WordReplaceText.Replace>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </p:WordReplaceText>
+                    <p:WordReplaceText Found="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="Replace Text in Document-합계" sap:VirtualizedContainerService.HintSize="434,167.333333333333" sap2010:WorkflowViewState.IdRef="WordReplaceText_16" ReplaceAll="True" Search="[&quot;{&quot;+string.Format(&quot;합계{0}&quot;, int32_반복계수)+&quot;}&quot;]">
+                      <p:WordReplaceText.Replace>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </p:WordReplaceText.Replace>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </p:WordReplaceText>
+                    <Assign sap:VirtualizedContainerService.HintSize="434,62" sap2010:WorkflowViewState.IdRef="Assign_5">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[int32_반복계수]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[int32_반복계수+1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ui:InterruptibleWhile.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InterruptibleWhile>
+            </Sequence>
+            <p:WordExportToPdf DisplayName="Save Document as PDF" FilePath="[in_dic_설정(&quot;OutputDataPathWorkDay&quot;).ToString+in_row_현재수신자정보(&quot;이름&quot;).ToString+&quot;_&quot;+in_row_현재수신자정보(&quot;송장번호&quot;).ToString+&quot;.pdf&quot;]" sap:VirtualizedContainerService.HintSize="1116,112.666666666667" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p:WordExportToPdf>
+          </Sequence>
+        </ActivityAction>
+      </p:WordApplicationScope.Body>
+    </p:WordApplicationScope>
+    <ui:LogMessage DisplayName="Log Message - 04_송장 출력 끝" sap:VirtualizedContainerService.HintSize="1192,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;04_송장 출력 끝&quot;]" />
+  </Sequence>
+</Activity>

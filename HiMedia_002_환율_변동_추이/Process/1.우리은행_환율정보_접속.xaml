@@ -1,0 +1,196 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_1_우리은행_환율정보_접속" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_dic_설정" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>549.333333333333,1430.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_1_우리은행_환율정보_접속_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_1_우리은행_환율정보_접속" sap:VirtualizedContainerService.HintSize="508.666666666667,1366" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message-1.우리은행 환율정보 접속 시작" sap:VirtualizedContainerService.HintSize="466.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;1.우리은행 환율정보 접속 시작&quot;]" />
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_dic_설정(&quot;OutputDataPathWorkDay&quot;).ToString+&quot;환율변동추이(&quot;+now.toString(&quot;yyyy.MM.dd&quot;)+&quot;).xlsx&quot;]" DisplayName="Copy File - 템플릿 파일 복사" sap:VirtualizedContainerService.HintSize="466.666666666667,162" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_dic_설정(&quot;템플릿_Path&quot;).ToString]" />
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="466.666666666667,216.666666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[in_dic_설정(&quot;우리은행_URL&quot;).ToString]">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:OpenBrowser.Body>
+    </ui:OpenBrowser>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - 우리은행 일별환율조회" sap:VirtualizedContainerService.HintSize="466.666666666667,546" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="a88d1ab428fd00741fe8b6f8b34deaff" Selector="&lt;html app='chrome.exe' title='일별환율조회 - 우리은행' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400.666666666667,400" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item - 통화" sap:VirtualizedContainerService.HintSize="358.666666666667,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="전체">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="64">
+                  <x:String>전체</x:String>
+                  <x:String>USD(미국)</x:String>
+                  <x:String>JPY(일본(100))</x:String>
+                  <x:String>EUR(유럽연합)</x:String>
+                  <x:String>AED(U.A.E)</x:String>
+                  <x:String>ARS(아르헨티나)</x:String>
+                  <x:String>AUD(호주)</x:String>
+                  <x:String>BDT(방글라데시)</x:String>
+                  <x:String>BHD(바레인)</x:String>
+                  <x:String>BND(브루나이)</x:String>
+                  <x:String>BRL(브라질)</x:String>
+                  <x:String>CAD(캐나다)</x:String>
+                  <x:String>CHF(스위스)</x:String>
+                  <x:String>CNY(중국)</x:String>
+                  <x:String>CZK(체코)</x:String>
+                  <x:String>DKK(덴마크)</x:String>
+                  <x:String>EGP(이집트)</x:String>
+                  <x:String>FJD(피지)</x:String>
+                  <x:String>GBP(영국)</x:String>
+                  <x:String>HKD(홍콩)</x:String>
+                  <x:String>HUF(헝가리)</x:String>
+                  <x:String>IDR(인도네시아(100))</x:String>
+                  <x:String>ILS(이스라엘)</x:String>
+                  <x:String>INR(인도)</x:String>
+                  <x:String>JOD(요르단)</x:String>
+                  <x:String>KHR(캄보디아(100))</x:String>
+                  <x:String>KWD(쿠웨이트)</x:String>
+                  <x:String>KZT(카자흐스탄)</x:String>
+                  <x:String>MNT(몽골)</x:String>
+                  <x:String>MXN(멕시코)</x:String>
+                  <x:String>MYR(말레이지아)</x:String>
+                  <x:String>NOK(노르웨이)</x:String>
+                  <x:String>NPR(네팔)</x:String>
+                  <x:String>NZD(뉴질랜드)</x:String>
+                  <x:String>PHP(필리핀)</x:String>
+                  <x:String>PKR(파키스탄)</x:String>
+                  <x:String>PLN(폴란드)</x:String>
+                  <x:String>QAR(카타르)</x:String>
+                  <x:String>RUB(러시아)</x:String>
+                  <x:String>SAR(사우디)</x:String>
+                  <x:String>SEK(스웨덴)</x:String>
+                  <x:String>SGD(싱가포르)</x:String>
+                  <x:String>THB(태국)</x:String>
+                  <x:String>TRY(터키)</x:String>
+                  <x:String>TWD(대만)</x:String>
+                  <x:String>VND(베트남(100))</x:String>
+                  <x:String>XAG(SILVER 1g)</x:String>
+                  <x:String>XAU(GOLD 1g)</x:String>
+                  <x:String>ZAR(남아공)</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3768c3f3-cecc-4894-8612-89a2db4dc47d" InformativeScreenshot="260f817880e23e90beee782d1a6d275d" Selector="&lt;webctrl tag='SELECT' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item - 고시회차" sap:VirtualizedContainerService.HintSize="358.666666666667,134" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="최초고시">
+              <ui:SelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>현재</x:String>
+                  <x:String>최초고시</x:String>
+                </scg:List>
+              </ui:SelectItem.Items>
+              <ui:SelectItem.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4318edc4-8647-4b1f-a7ac-d86a1aa5d392" InformativeScreenshot="f73f423ece4f670110dbfd0e50a02913" Selector="&lt;webctrl id='c1' tag='SELECT' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:SelectItem.Target>
+            </ui:SelectItem>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+    <ui:LogMessage DisplayName="Log Message-1.우리은행 환율정보 접속 끝" sap:VirtualizedContainerService.HintSize="466.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;1.우리은행 환율정보 접속 끝&quot;]" />
+  </Sequence>
+</Activity>
